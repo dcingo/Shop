@@ -10,10 +10,10 @@ namespace Shop.Application.Sales.Queries.GetSaleDetails
     public class SaleDetailsVM : IMapWith<Sale>
     {
         public int Id { get; set; }
-        public DateTime Date { get; set; } 
-        public DateTime Time { get; set; } 
-        public SalesPoint SalesPointId { get; set; }
-        public Buyer BuyerId { get; set; }
+        public DateTime Date { get; set; }
+        public DateTime Time { get; set; }
+        public SalesPoint SalesPoint { get; set; }
+        public Buyer Buyer { get; set; }
         public List<SaleData> SalesData { get; set; }
         public double TotalAmount { get; set; }
 
@@ -23,8 +23,8 @@ namespace Shop.Application.Sales.Queries.GetSaleDetails
                 .ForMember(saleVM => saleVM.Id, opt => opt.MapFrom(sale => sale.Id))
                 .ForMember(saleVM => saleVM.Date, opt => opt.MapFrom(sale => sale.Date))
                 .ForMember(saleVM => saleVM.Time, opt => opt.MapFrom(sale => sale.Time))
-                .ForMember(saleVM => saleVM.SalesPointId, opt => opt.MapFrom(sale => sale.SalesPoint))
-                .ForMember(saleVM => saleVM.BuyerId, opt => opt.MapFrom(sale => sale.Buyer))
+                .ForMember(saleVM => saleVM.SalesPoint, opt => opt.MapFrom(sale => sale.SalesPoint))
+                .ForMember(saleVM => saleVM.Buyer, opt => opt.MapFrom(sale => sale.Buyer))
                 .ForMember(saleVM => saleVM.SalesData, opt => opt.MapFrom(sale => sale.SalesData))
                 .ForMember(saleVM => saleVM.TotalAmount, opt => opt.MapFrom(sale => sale.TotalAmount));
         }

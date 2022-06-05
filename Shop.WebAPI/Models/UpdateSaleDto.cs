@@ -10,16 +10,14 @@ namespace Shop.WebAPI.Models
     public class UpdateSaleDto:IMapWith<UpdateSaleCommand>
     {
         public int Id { get; set; }   
-        public int SalesPoint { get; set; }
-        public int Buyer { get; set; }
-        public List<SaleData> SalesData { get; set; }
+        public int SalesPointId { get; set; }
+        public int BuyerId { get; set; }
         public void Mapping(Profile profile)
         {
             profile.CreateMap<UpdateSaleDto, UpdateSaleCommand>()
                 .ForMember(saleComand => saleComand.Id, opt => opt.MapFrom(saleDto => saleDto.Id))
-                .ForMember(saleComand => saleComand.Buyer, opt => opt.MapFrom(saleDto => saleDto.Buyer))
-                .ForMember(saleComand => saleComand.SalesPoint, opt => opt.MapFrom(saleDto => saleDto.SalesPoint))
-                .ForMember(saleComand => saleComand.SalesData, opt => opt.MapFrom(saleDto => saleDto.SalesData));
+                .ForMember(saleComand => saleComand.BuyerId, opt => opt.MapFrom(saleDto => saleDto.BuyerId))
+                .ForMember(saleComand => saleComand.SalesPointId, opt => opt.MapFrom(saleDto => saleDto.SalesPointId));
         }
     }
 }

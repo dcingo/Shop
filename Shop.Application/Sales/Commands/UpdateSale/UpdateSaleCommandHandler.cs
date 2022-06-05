@@ -25,12 +25,20 @@ namespace Shop.Application.Sales.Commands.UpdateSale
             {
                 throw new NotFoundException(nameof(Sale), request.Id);
             }
-            entity.SalesData = request.SalesData;
-            entity.SalesPoint = request.SalesPoint;
+            var salePoint = await _DbContext.SalesPoints.FirstOrDefaultAsync(sp=>sp.Id == request.SalesPointId, cancellationToken);
+            if (salePoint == null)
+            {
+                throw new NotFoundException(nameof(Sale), request.Id);
+            }
+            var buyer = await _DbContext.Buyers.FirstOrDefaultAsync(b => b.Id == request.BuyerId, cancellationToken);
+            if (salePoint == null)
+            {
+                throw new NotFoundException(nameof(Sale), request.Id);
+            }
+            entity.SalesPoint = salePoint;
             entity.Date =  DateTime.Now;
             entity.Time = DateTime.Now;
-            entity.Buyer = request.Buyer;
-            entity.TotalAmount = request.SalesData.Sum(x => x.ProductIdAmount);
+            entity.Buyer = buyer;
             await _DbContext.SaveChangesAsync(cancellationToken);
             return Unit.Value;
         }
