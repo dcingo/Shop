@@ -10,13 +10,13 @@ namespace Shop.Persistence
         public static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
         {
             var connectionString = configuration["DbConnection"];
-            services.AddDbContext<SalesDbContext>(options =>
+            services.AddDbContext<ShopDbContext>(options =>
             {
                 options.UseInMemoryDatabase("dbSale");
                 //options.UseSqlServer(connectionString);
             });
             services.AddScoped<IShopDbContext>(options =>
-                options.GetService<SalesDbContext>());
+                options.GetService<ShopDbContext>());
             return services;
         }
     }

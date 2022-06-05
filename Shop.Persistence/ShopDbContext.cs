@@ -6,7 +6,7 @@ using Shop.Persistence.EntityTypeConfiguration;
 
 namespace Shop.Persistence
 {
-    public class SalesDbContext : DbContext, IShopDbContext
+    public class ShopDbContext : DbContext, IShopDbContext
     {
         public DbSet<Sale> Sales { get; set; }
         public DbSet<Buyer> Buyers { get; set; }
@@ -14,7 +14,7 @@ namespace Shop.Persistence
         public DbSet<SalesPoint> SalesPoints { get; set; }
         public DbSet<SaleData> SaleDatas { get; set; }
         public DbSet<ProvidedProduct> ProvidedProducts { get; set; }
-        public SalesDbContext(DbContextOptions<SalesDbContext> options)
+        public ShopDbContext(DbContextOptions<ShopDbContext> options)
             : base(options)
         {
 

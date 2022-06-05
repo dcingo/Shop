@@ -22,7 +22,7 @@ namespace Shop.WebAPI
                 var serviceProvider = score.ServiceProvider;
                 try
                 {
-                    var contex = serviceProvider.GetRequiredService<SalesDbContext>();
+                    var contex = serviceProvider.GetRequiredService<ShopDbContext>();
                     DbInitializer.Initialize(contex);
                 }
                 catch (Exception ex)

@@ -9,7 +9,7 @@ namespace Shop.Persistence
 {
     public class DbInitializer
     {
-        public static void Initialize(SalesDbContext context)
+        public static void Initialize(ShopDbContext context)
         {
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
