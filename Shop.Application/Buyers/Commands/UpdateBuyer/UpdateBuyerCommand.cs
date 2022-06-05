@@ -12,5 +12,7 @@ namespace Shop.Application.Buyers.Commands.UpdateBuyer
         public string Name { get; set; }
         public List<Sale> Sales { get; set; }
 
+        public string salesId { get; set; }
+
     }
 }

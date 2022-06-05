@@ -10,11 +10,12 @@ namespace Shop.WebAPI.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public List<Sale> Sales { get; set; }
+        public string salesId { get; set; }
         public void Mapping(Profile profile)
         {
             profile.CreateMap<UpdateBuyerDto, UpdateBuyerCommand>()
                 .ForMember(buyerComand => buyerComand.Id, opt => opt.MapFrom(buyerDto => buyerDto.Id))
+                .ForMember(buyerComand => buyerComand.salesId, opt => opt.MapFrom(buyerDto => buyerDto.salesId))
                 .ForMember(buyerComand => buyerComand.Name, opt => opt.MapFrom(buyerDto => buyerDto.Name));
         }
     }

@@ -54,7 +54,7 @@ namespace Shop.Application.Sales.Commands.CreateSale
                 }
                 else
                 {
-                    buyer.salesId +=", "+ sale.Id;
+                    buyer.salesId +=","+ sale.Id;
                 }
             }
             await _DbContext.SaveChangesAsync(cancellationToken);

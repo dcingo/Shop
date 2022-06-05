@@ -11,7 +11,7 @@ namespace Shop.WebAPI.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public List<ProvidedProduct> ProvidedProduct { get; set; }
+        public List<DataProvidedProduct> ProvidedProduct { get; set; }
         public void Mapping(Profile profile)
         {
             profile.CreateMap<UpdateSalePointsDto, UpdateSalePointCommand>()

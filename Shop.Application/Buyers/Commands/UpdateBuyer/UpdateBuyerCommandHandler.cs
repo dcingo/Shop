@@ -7,6 +7,7 @@ using Shop.Domain;
 using Shop.Application.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Shop.Application.Common.Exceptions;
+using System.Collections.Generic;
 
 namespace Shop.Application.Buyers.Commands.UpdateBuyer
 {
@@ -25,10 +26,38 @@ namespace Shop.Application.Buyers.Commands.UpdateBuyer
             {
                 throw new NotFoundException(nameof(Sale), request.Id);
             }
+
+            List < Sale> salelist = new();
+            string d = "";
+            string[] ss = request.salesId.Split(",");
+            if (ss.Length > 1)
+            {
+                foreach (var x in ss)
+                {
+                    Sale s = _DbContext.Sales.FirstOrDefault(sale => sale.Id == Int32.Parse(x));
+                    if (s == null) continue;
+                    salelist.Add(s);
+                    if (d == "")
+                    {
+                        d += s.Id;
+                    }
+                    else
+                    {
+                        d += "," + s.Id;
+                    }
+                }
+            }
+            else
+            {
+                salelist.Add(_DbContext.Sales.FirstOrDefault(sale => sale.Id == Int32.Parse(request.salesId)));
+                d = request.salesId;
+            }
+            entity.Sales = salelist;
+            entity.salesId = d; 
             entity.Name = request.Name;
-            entity.Sales = request.Sales;
             await _DbContext.SaveChangesAsync(cancellationToken);
             return Unit.Value;
+       
         }
     }
 }
