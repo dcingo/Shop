@@ -11,9 +11,9 @@ namespace Shop.Domain
         [Key]
         public int Id { get; set; }// – Идентификатор
         public string Name { get; set; }// – Название
-
-       
         public List<Sale> Sales { get; set; } = new();//– коллекция всех идентификаторов покупок/. бред
+        public string salesId { get; set; }
+
         /*[NotMapped]
          public int[] Data
         {

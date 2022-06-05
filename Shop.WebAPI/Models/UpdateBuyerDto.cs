@@ -15,8 +15,7 @@ namespace Shop.WebAPI.Models
         {
             profile.CreateMap<UpdateBuyerDto, UpdateBuyerCommand>()
                 .ForMember(buyerComand => buyerComand.Id, opt => opt.MapFrom(buyerDto => buyerDto.Id))
-                .ForMember(buyerComand => buyerComand.Name, opt => opt.MapFrom(buyerDto => buyerDto.Name))
-                .ForMember(buyerComand => buyerComand.Sales, opt => opt.MapFrom(buyerDto => buyerDto.Sales));
+                .ForMember(buyerComand => buyerComand.Name, opt => opt.MapFrom(buyerDto => buyerDto.Name));
         }
     }
 }

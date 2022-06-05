@@ -27,11 +27,8 @@ namespace Shop.Application.Buyers.Queries.GetBuyerDetails
 
         public async Task<BuyerDetailsVM> Handle(GetBuyerDetailsQuery request, CancellationToken cancellationToken)
         {
-            var entity = await _DbContext.Sales.Include(b => b.Buyer).Include(s => s.SalesPoint).Include(sd => sd.SalesData)
+            var entity = await _DbContext.Buyers.Include(b => b.Sales)
                 .FirstOrDefaultAsync(sale => sale.Id == request.Id, cancellationToken);
-
-            
-            String s=  entity.Buyer.Name;
 
             if (entity == null)
             {

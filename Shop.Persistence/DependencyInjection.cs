@@ -12,8 +12,8 @@ namespace Shop.Persistence
             var connectionString = configuration["DbConnection"];
             services.AddDbContext<SalesDbContext>(options =>
             {
-                //options.UseInMemoryDatabase("dbSale");
-                options.UseSqlServer(connectionString);
+                options.UseInMemoryDatabase("dbSale");
+                //options.UseSqlServer(connectionString);
             });
             services.AddScoped<IShopDbContext>(options =>
                 options.GetService<SalesDbContext>());

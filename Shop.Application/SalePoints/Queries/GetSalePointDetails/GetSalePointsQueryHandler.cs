@@ -26,7 +26,7 @@ namespace Shop.Application.SalePoints.Queries.GetSalePointDetails
 
         public async Task<SalePointDetailsVm> Handle(GetSalePointDetailsQuery request, CancellationToken cancellationToken)
         {
-            var entity = await _DbContext.SalesPoints.Include(psr => psr.ProvidedProducts)
+            var entity = await _DbContext.SalesPoints
                 .FirstOrDefaultAsync(sale => sale.Id == request.Id, cancellationToken);
             if (entity == null)
             {

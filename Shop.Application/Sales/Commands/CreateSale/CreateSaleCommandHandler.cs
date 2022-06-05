@@ -45,13 +45,19 @@ namespace Shop.Application.Sales.Commands.CreateSale
 
             await _DbContext.Sales.AddAsync(sale, cancellationToken);
             await _DbContext.SaveChangesAsync(cancellationToken);
-            /*if (buyer != null)
+            if (buyer != null)
             {
                 buyer.Sales.Add(sale);
-                buyer.ListSaleids.Add(sale.Id);
-            }*/
+                if (buyer.salesId == "")
+                {
+                    buyer.salesId += sale.Id;
+                }
+                else
+                {
+                    buyer.salesId +=", "+ sale.Id;
+                }
+            }
             await _DbContext.SaveChangesAsync(cancellationToken);
-            //buyer.ListidSale.Add(sale.Id);
             return sale.Id;
         }
     }

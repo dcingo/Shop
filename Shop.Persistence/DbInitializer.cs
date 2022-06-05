@@ -30,9 +30,9 @@ namespace Shop.Persistence
             SalesPoint sp3 = new SalesPoint { Name = "Магазин 3", ProvidedProducts = new List<ProvidedProduct> { pp32, pp34 } };
             context.SalesPoints.AddRange(sp1, sp2, sp3);
             context.SaveChanges();
-            Buyer b1 = new Buyer() { Name = "Покупатель 1"};
-            Buyer b2 = new Buyer() { Name = "Покупатель 2"};
-            Buyer b3 = new Buyer() { Name = "Покупатель 3"};
+            Buyer b1 = new Buyer() { Name = "Покупатель 1", salesId = "" };
+            Buyer b2 = new Buyer() { Name = "Покупатель 2", salesId = "" };
+            Buyer b3 = new Buyer() { Name = "Покупатель 3", salesId = "" };
             context.Buyers.AddRange(b1, b2, b3);
             context.SaveChanges();
             Sale s = new Sale {  Buyer = b1, Date = DateTime.Now, Time = DateTime.Now,
@@ -40,7 +40,8 @@ namespace Shop.Persistence
                             new SaleData {product =t2, ProductQuantity =20, ProductIdAmount =t2.Price*20 }}, SalesPoint = sp1, TotalAmount = t1.Price * 10 + t2.Price * 20 };
             context.Sales.Add(s);
             context.SaveChanges();
-
+            b1.salesId += s.Id;
+            context.SaveChanges();
 
         }
     }
