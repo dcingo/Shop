@@ -23,13 +23,9 @@ namespace ShopWebAPITest
 
         }
 
-
         public void Dispose()
         {
             ShopContextFactoryTest.Destroy(Context);
         }
-
-        [CollectionDefinition("QueryCoollection")]
-        public class QueryCoollection : ICollectionFixture<QueryCoollection> { }
     }
 }

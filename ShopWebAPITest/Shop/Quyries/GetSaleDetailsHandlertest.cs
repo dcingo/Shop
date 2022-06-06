@@ -17,10 +17,11 @@ namespace ShopWebAPITest.Shop.Quyries
         private readonly ShopDbContext Context;
         private readonly IMapper Mapper;
 
-        public GetSaleDetailsHandlertest(QueryTestFixtute fixture)
+        public GetSaleDetailsHandlertest()
         {
-            Context = fixture.Context;
-            Mapper = fixture.Mapper;
+            QueryTestFixtute f = new QueryTestFixtute();
+            Context = f.Context;
+            Mapper = f.Mapper;
         }
 
 

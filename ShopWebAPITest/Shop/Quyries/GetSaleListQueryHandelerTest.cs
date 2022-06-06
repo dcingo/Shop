@@ -9,6 +9,7 @@ using Xunit;
 using Shop.Application.Sales.Queries.GetSaleList;
 using Shop.Persistence;
 using AutoMapper;
+using ShopWebAPITest;
 
 namespace ShopWebAPITest.Shop.Quyries
 {
@@ -17,10 +18,11 @@ namespace ShopWebAPITest.Shop.Quyries
         private readonly ShopDbContext Context;
         private readonly IMapper Mapper;
 
-        public GetSaleListQueryHandelerTest(QueryTestFixtute fixture)
+        public GetSaleListQueryHandelerTest()
         {
-            Context = fixture.Context;
-            Mapper = fixture.Mapper;
+            QueryTestFixtute f = new QueryTestFixtute();
+            Context = f.Context;
+            Mapper = f.Mapper;
         }
 
 
