@@ -7,12 +7,12 @@ namespace Shop.Application.Sales.Commands.CreateSale
 {
     public class CreateSaleCommand : IRequest<int>
     {
-        public int SalesPoint { get; set; }
-        public int Buyer { get; set; }
-        public List<querySaleData> SaleDatas { get; set; }
+        public int SalesPointId { get; set; }
+        public int BuyerId { get; set; }
+        public List<QuerySaleData> SaleDatas { get; set; }
     }
 
-    public class querySaleData
+    public class QuerySaleData
     {
         public int IdProduct { get; set; }
         public int count { get; set; }

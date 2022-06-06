@@ -10,12 +10,12 @@ using Shop.Application.Common.Exceptions;
 
 namespace Shop.Application.Sales.Commands.UpdateSale
 {
-    public class UpdateBuyerCommandHandler : IRequestHandler<UpdateSaleCommand>
+    public class UpdateSaleCommandHandler : IRequestHandler<UpdateSaleCommand>
     {
 
         private readonly IShopDbContext _DbContext;
 
-        public UpdateBuyerCommandHandler(IShopDbContext dbContext) =>
+        public UpdateSaleCommandHandler(IShopDbContext dbContext) =>
             _DbContext = dbContext;
 
         public async Task<Unit> Handle(UpdateSaleCommand request, CancellationToken cancellationToken)

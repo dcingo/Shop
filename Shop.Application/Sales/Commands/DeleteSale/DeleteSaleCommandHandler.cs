@@ -7,13 +7,13 @@ using Shop.Application.Common.Exceptions;
 
 namespace Shop.Application.Sales.Commands.DeleteSale
 {
-    public class DeleteBuyerCommandHandler : IRequestHandler<DeleteSaleCommand>
+    public class DeleteSaleCommandHandler : IRequestHandler<DeleteSaleCommand>
     {
 
 
         private readonly IShopDbContext _DbContext;
 
-        public DeleteBuyerCommandHandler(IShopDbContext dbContext) =>
+        public DeleteSaleCommandHandler(IShopDbContext dbContext) =>
             _DbContext = dbContext;
 
         public async Task<Unit> Handle(DeleteSaleCommand request, CancellationToken cancellationToken)

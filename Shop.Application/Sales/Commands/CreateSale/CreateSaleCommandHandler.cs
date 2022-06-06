@@ -19,8 +19,8 @@ namespace Shop.Application.Sales.Commands.CreateSale
             _DbContext = dbContext;
         public async Task<int> Handle(CreateSaleCommand request, CancellationToken cancellationToken)
         {
-            Buyer buyer = _DbContext.Buyers.FirstOrDefault(x=>x.Id==request.Buyer);
-            SalesPoint sp = _DbContext.SalesPoints.Include(pp=>pp.ProvidedProducts).FirstOrDefault(x=>x.Id==request.SalesPoint);
+            Buyer buyer = _DbContext.Buyers.FirstOrDefault(x=>x.Id==request.BuyerId);
+            SalesPoint sp = _DbContext.SalesPoints.Include(pp=>pp.ProvidedProducts).FirstOrDefault(x=>x.Id==request.SalesPointId);
             if (sp == null) throw new NotFoundException("Точка продажи не найдена",cancellationToken);
             List<SaleData> list = new();
             foreach (var x in request.SaleDatas)
