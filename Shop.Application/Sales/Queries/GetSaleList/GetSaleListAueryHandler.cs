@@ -13,12 +13,12 @@ using Shop.Domain;
 
 namespace Shop.Application.Sales.Queries.GetSaleList
 {
-    public class GetBuyerListAueryHandler : IRequestHandler<GetSaleListQuery, SaleListVm>
+    public class GetBuyerListQueryHandler : IRequestHandler<GetSaleListQuery, SaleListVm>
     {
 
         private readonly IShopDbContext _DbContext;
         private readonly IMapper _Mapper;
-        public GetBuyerListAueryHandler(IShopDbContext dbContext, IMapper mapper)
+        public GetBuyerListQueryHandler(IShopDbContext dbContext, IMapper mapper)
         {
             _DbContext = dbContext;
             _Mapper = mapper;

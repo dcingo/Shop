@@ -13,7 +13,7 @@ namespace ShopWebAPITest
         {
 
             var opt = new DbContextOptionsBuilder<ShopDbContext>()
-                .UseInMemoryDatabase("dbShopTest")
+                .UseInMemoryDatabase(Guid.NewGuid().ToString())
                 .Options;
             var context = new ShopDbContext(opt);
             context.Database.EnsureCreated();
